@@ -1,25 +1,26 @@
-package base.consumer;
+package transcation;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
+import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 
 import java.util.List;
 
 /**
- * 消费者
+ * 事务消息消费者
  */
-public class Consumer {
-    public static void main(String[] args) throws Exception {
+public class TranscationConsumer {
+    public static void main(String[] args) throws MQClientException {
         // 实例化消息消费者,指定组名
         DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("group2");
         // 指定Namesrv地址信息.
         consumer.setNamesrvAddr("39.105.167.25:9876;47.100.79.166:9876");
         // 订阅Topic
-        consumer.subscribe("base", "Tag1");
+        consumer.subscribe("topic4", "*");
         //负载均衡模式消费
         consumer.setMessageModel(MessageModel.BROADCASTING);
         // 注册回调函数，处理消息

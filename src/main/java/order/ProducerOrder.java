@@ -1,4 +1,4 @@
-package base.order;
+package order;
 
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.MessageQueueSelector;

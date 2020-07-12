@@ -1,4 +1,4 @@
-package base.batch;
+package batch;
 
 /**
  * 发送批量消息
